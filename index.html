@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify Certificate</title>
+    <title>Verify Your Certificate</title>
     <script type="text/javascript">
-        window.onload = function() {
-            // Create a form dynamically with POST method
-            var form = document.createElement("form");
-            form.method = "POST";
-            form.action = "https://www.oshac.us/certification-verification.php";  // The target URL
+        function submitForm() {
+            var certificateNumber = document.getElementById('certificate_no').value;
+            if (certificateNumber) {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://www.oshac.us/certification-verification.php';
 
-            // Add the certificate number input field
-            var input = document.createElement("input");
-            input.type = "hidden";
-            input.name = "certificate_no";
-            input.value = "35-77278";  // Replace with your certificate number
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'certificate_no';
+                input.value = certificateNumber;
 
-            // Append the input field to the form
-            form.appendChild(input);
-
-            // Append the form to the body
-            document.body.appendChild(form);
-
-            // Submit the form
-            form.submit();
-        };
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            } else {
+                alert('Please enter your certificate number.');
+            }
+        }
     </script>
 </head>
 <body>
-    <p>Redirecting to certificate verification...</p>
+    <h2>Verify Your Certificate</h2>
+    <p>Please enter your certificate number below and click "Verify."</p>
+    <input type="text" id="certificate_no" placeholder="Enter certificate number here" autofocus>
+    <button onclick="submitForm()">Verify</button>
 </body>
 </html>
